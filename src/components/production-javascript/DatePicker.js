@@ -2,16 +2,23 @@ import { ErrorMessage, Field } from 'formik';
 import TextError from '../dev-training/TextError';
 import React from 'react';
 
+import DateView from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 function DatePicker({ name, label, showErrorMessage, ...rest }) {
    return (
       <div className='form-control'>
-         <Field name={name} {...rest}>
+         <Field name={name}>
             {({ field, form }) => {
+               const { value } = field;
+               const { setFieldValue } = form;
                return (
-                  // prettier-ignore
-                  <DatePicker
-                     selected={field.values}
-                     onChange={(date) => form.setFieldValue(name,date)} 
+                  <DateView
+                     id={name}
+                     {...field}
+                     {...rest}
+                     selected={value}
+                     onChange={(date) => setFieldValue(name, date)}
                   />
                );
             }}

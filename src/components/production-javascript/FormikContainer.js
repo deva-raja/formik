@@ -40,7 +40,10 @@ function FormikContainer() {
       selectedDate: Yup.date().required('Required').nullable(),
    });
 
-   const onSubmit = (values) => console.log(values, 'Form Values');
+   const onSubmit = (values) => {
+      console.log(values, 'Form Values');
+      console.log(JSON.parse(JSON.stringify(values)), 'Json Form Values');
+   };
 
    return (
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>

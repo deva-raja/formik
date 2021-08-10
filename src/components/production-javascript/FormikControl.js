@@ -19,7 +19,7 @@ function FormikControl(props) {
       case 'checkbox':
          return <CheckBoxGroup {...rest} />;
       case 'date':
-         return <DatePicker />;
+         return <DatePicker {...rest} />;
       default:
          return null;
    }
